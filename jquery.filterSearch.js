@@ -1,5 +1,5 @@
 
-jQuery.fn.filterSearch = function (list) {
+jQuery.fn.filterSearch = function (list, callback) {
 
     list = jQuery(list).children();
     var input = this;
@@ -24,6 +24,7 @@ jQuery.fn.filterSearch = function (list) {
                 item.hide();
             }
         })
+        callback();
         return false;
     }).keyup(function () {
         input.change();
