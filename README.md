@@ -4,7 +4,7 @@ Simple jQuery 'inclusive OR' search filter plugin. Requires jQuery, obvs. Probab
 
 ##Usage:
 
-    $(searchBoxElement).filterSearch($(listElement), optionalTimeout, optionalCallback);
+    $(searchElementSelector).filterSearch(listElementSelector, optionalTimeout, optionalCallback);
     
 If you opt for a callback but no timeout it will still work without you having to put a zero timeout value.
 
