@@ -1,6 +1,6 @@
 {
   "name": "jquery.filtersearch",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Simple jQuery search filter plugin.",
   "main": "src/jquery.filterSearch.js",
   "scripts": {
