@@ -1,8 +1,11 @@
 # jquery.filterSearch
+
 Simple jQuery 'inclusive OR' search filter plugin. Requires jQuery, obvs. Probably fine with all versions of jQuery but let me know if not!
 
 ##Usage:
+
     $(searchBoxElement).filterSearch($(listElement), optionalTimeout, optionalCallback);
+    
 If you opt for a callback but no timeout it will still work without you having to put a zero timeout value.
 
 ##Examples:
@@ -49,12 +52,15 @@ Once initialised like this, entering "c 2" into search box will then hide all re
 As above, but after each change to the contents of the search box the "alert('...')" callback will be called.
 
 ####Example C
+
     <script>
         $('input#mysearchfield').filterSearch('ul#mystufftosearch', 500);
     </script>
+    
 Entering "c 2" into search box will then hide all results that contain neither "c" nor "2", once the timeout period of 500ms has elapsed without any further keypresses. This minimises the load on the browser as it only does the filtering once you stop typing for a moment as opposed to after every single keypress. In turn, as long as you find the ideal timeout value it can make the filter feel much more responsive to the end-user.
 
 ####Example D
+
     <script>
         $('input#mysearchfield').filterSearch(
             'ul#mystufftosearch',
@@ -64,4 +70,5 @@ Entering "c 2" into search box will then hide all results that contain neither "
             }
         );
     </script>
+    
 Combination of the above; waits for timeout, filters list data, then also calls 'alert' callback.
