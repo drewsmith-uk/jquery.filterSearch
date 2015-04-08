@@ -11,6 +11,7 @@ If you opt for a callback but no timeout it will still work without you having t
 ##Examples:
 
 ###HTML Markup
+
     <input id="mysearchfield" placeholder="Type to filter">
     <ul id="mystufftosearch">
         <li>a 1</li>
@@ -28,9 +29,9 @@ If you opt for a callback but no timeout it will still work without you having t
 ###JavaScript code
 
 ####Example A
-    <script>
+
         $('input#mysearchfield').filterSearch('ul#mystufftosearch');
-    </script>
+
 Once initialised like this, entering "c 2" into search box will then hide all results that contain neither "c" nor "2", leaving the following results visible:
 
         a 2
@@ -40,28 +41,24 @@ Once initialised like this, entering "c 2" into search box will then hide all re
         c 3
     
 ####Example B
-    <script>
-        $('input#mysearchfield').filterSearch(
+
+    $('input#mysearchfield').filterSearch(
             'ul#mystufftosearch',
             function() { 
                 alert("it werks!");
             }
         );
-    </script>
     
 As above, but after each change to the contents of the search box the "alert('...')" callback will be called.
 
 ####Example C
 
-    <script>
         $('input#mysearchfield').filterSearch('ul#mystufftosearch', 500);
-    </script>
     
 Entering "c 2" into search box will then hide all results that contain neither "c" nor "2", once the timeout period of 500ms has elapsed without any further keypresses. This minimises the load on the browser as it only does the filtering once you stop typing for a moment as opposed to after every single keypress. In turn, as long as you find the ideal timeout value it can make the filter feel much more responsive to the end-user.
 
 ####Example D
 
-    <script>
         $('input#mysearchfield').filterSearch(
             'ul#mystufftosearch',
             500,
@@ -69,6 +66,5 @@ Entering "c 2" into search box will then hide all results that contain neither "
                 alert("it werks with timeout too!");
             }
         );
-    </script>
     
 Combination of the above; waits for timeout, filters list data, then also calls 'alert' callback.
