@@ -1,8 +1,8 @@
 {
-  "name": "jquery.filtersearch",
-  "version": "1.2.5",
-  "description": "Simple jQuery search filter plugin.",
-  "main": "src/jquery.filterSearch.js",
+  "name": "filtersearch",
+  "version": "2.0.0",
+  "description": "Simple search filter. No dependencies.",
+  "main": "src/filterSearch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,10 +11,10 @@
     "url": "https://github.com/drewstiff/jquery.filterSearch.git"
   },
   "keywords": [
-    "jquery-plugin",
-    "ecosystem:jquery",
     "filter",
-    "search"
+    "search",
+    "vanilla",
+    "no-dependencies"
   ],
   "author": "Drew Smith",
   "license": "ISC",
