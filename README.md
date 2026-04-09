@@ -1,6 +1,6 @@
 # filterSearch
 
-Simple 'inclusive OR' search filter. No dependencies.
+Simple live search filter. No dependencies. Splits the search box value on spaces and shows only items that contain every term.
 
 ## Installation
 
@@ -52,10 +52,12 @@ If you opt for a callback but no timeout it will still work without you having t
 filterSearch('#mysearchfield', '#mystufftosearch');
 ```
 
-Once initialised like this, entering "c 2" into search box will then hide all results that contain neither "c" nor "2", leaving the following results visible:
+Once initialised like this, entering "c 2" into the search box will hide all results that do not contain both "c" and "2", leaving the following result visible:
 
-    a 2
-    b 2
+    c 2
+
+Entering just "c" would leave visible:
+
     c 1
     c 2
     c 3
@@ -76,7 +78,7 @@ As above, but after each change to the contents of the search box the callback w
 filterSearch('#mysearchfield', '#mystufftosearch', 500);
 ```
 
-Entering "c 2" into search box will then hide all results that contain neither "c" nor "2", once the timeout period of 500ms has elapsed without any further keypresses. This minimises the load on the browser as it only does the filtering once you stop typing for a moment as opposed to after every single keypress. In turn, as long as you find the ideal timeout value it can make the filter feel much more responsive to the end-user.
+Entering "c 2" into the search box will hide all results that do not contain both "c" and "2", once the timeout period of 500ms has elapsed without any further keypresses. This minimises the load on the browser as it only does the filtering once you stop typing for a moment as opposed to after every single keypress. In turn, as long as you find the ideal timeout value it can make the filter feel much more responsive to the end-user.
 
 #### Example D
 
