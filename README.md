@@ -1,70 +1,107 @@
-# jquery.filterSearch
+# filterSearch
 
-Simple jQuery 'inclusive OR' search filter plugin. Requires jQuery, obvs. Probably fine with all versions of jQuery but let me know if not!
+Simple live search filter. No dependencies. Splits the search box value on spaces and shows only items that contain every term.
 
-##Usage:
+## Installation
 
-    $(searchElementSelector).filterSearch(listElementSelector, optionalTimeout, optionalCallback);
-    
+```
+npm install filtersearch
+```
+
+Or include the script directly:
+
+```html
+<script src="path/to/filterSearch.js"></script>
+```
+
+## Usage
+
+```javascript
+filterSearch(inputElement, listElement, optionalTimeout, optionalCallback);
+```
+
+Both arguments accept CSS selector strings or DOM elements.
+
 If you opt for a callback but no timeout it will still work without you having to put a zero timeout value.
 
-##Examples:
+## Examples
 
-###HTML Markup
+### HTML Markup
 
-    <input id="mysearchfield" placeholder="Type to filter">
-    <ul id="mystufftosearch">
-        <li>a 1</li>
-        <li>a 2</li>
-        <li>a 3</li>
-        <li>b 1</li>
-        <li>b 2</li>
-        <li>b 3</li>
-        <li>c 1</li>
-        <li>c 2</li>
-        <li>c 3</li>
-    </ul>
-    <script src="path/to/jquery.filterSearch.js" type="text/javascript"></script>
-    
-###JavaScript code
+```html
+<input id="mysearchfield" placeholder="Type to filter">
+<ul id="mystufftosearch">
+    <li>a 1</li>
+    <li>a 2</li>
+    <li>a 3</li>
+    <li>b 1</li>
+    <li>b 2</li>
+    <li>b 3</li>
+    <li>c 1</li>
+    <li>c 2</li>
+    <li>c 3</li>
+</ul>
+<script src="path/to/filterSearch.js"></script>
+```
 
-####Example A
+### JavaScript code
 
-        $('input#mysearchfield').filterSearch('ul#mystufftosearch');
+#### Example A
 
-Once initialised like this, entering "c 2" into search box will then hide all results that contain neither "c" nor "2", leaving the following results visible:
+```javascript
+filterSearch('#mysearchfield', '#mystufftosearch');
+```
 
-        a 2
-        b 2
-        c 1
-        c 2
-        c 3
-    
-####Example B
+Once initialised like this, entering "c 2" into the search box will hide all results that do not contain both "c" and "2", leaving the following result visible:
 
-    $('input#mysearchfield').filterSearch(
-            'ul#mystufftosearch',
-            function() { 
-                alert("it werks!");
-            }
-        );
-    
-As above, but after each change to the contents of the search box the "alert('...')" callback will be called.
+    c 2
 
-####Example C
+Entering just "c" would leave visible:
 
-        $('input#mysearchfield').filterSearch('ul#mystufftosearch', 500);
-    
-Entering "c 2" into search box will then hide all results that contain neither "c" nor "2", once the timeout period of 500ms has elapsed without any further keypresses. This minimises the load on the browser as it only does the filtering once you stop typing for a moment as opposed to after every single keypress. In turn, as long as you find the ideal timeout value it can make the filter feel much more responsive to the end-user.
+    c 1
+    c 2
+    c 3
 
-####Example D
+#### Example B
 
-        $('input#mysearchfield').filterSearch(
-            'ul#mystufftosearch',
-            500,
-            function() {
-                alert("it werks with timeout too!");
-            }
-        );
-    
-Combination of the above; waits for timeout, filters list data, then also calls 'alert' callback.
+```javascript
+filterSearch('#mysearchfield', '#mystufftosearch', function () {
+    alert("it werks!");
+});
+```
+
+As above, but after each change to the contents of the search box the callback will be called.
+
+#### Example C
+
+```javascript
+filterSearch('#mysearchfield', '#mystufftosearch', 500);
+```
+
+Entering "c 2" into the search box will hide all results that do not contain both "c" and "2", once the timeout period of 500ms has elapsed without any further keypresses. This minimises the load on the browser as it only does the filtering once you stop typing for a moment as opposed to after every single keypress. In turn, as long as you find the ideal timeout value it can make the filter feel much more responsive to the end-user.
+
+#### Example D
+
+```javascript
+filterSearch('#mysearchfield', '#mystufftosearch', 500, function () {
+    alert("it werks with timeout too!");
+});
+```
+
+Combination of the above; waits for timeout, filters list data, then also calls the callback.
+
+### ES Module Usage
+
+```javascript
+import filterSearch from 'filtersearch';
+
+filterSearch('#mysearchfield', '#mystufftosearch');
+```
+
+### Using DOM Elements
+
+```javascript
+var input = document.getElementById('mysearchfield');
+var list = document.getElementById('mystufftosearch');
+filterSearch(input, list, 300);
+```
